@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const amenityId = {};
   $('input[type=checkbox]').change(function () {
-    var checked = $(this).is(':checked');
+    const checked = $(this).is(':checked');
     if (checked) {
       amenityId[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
