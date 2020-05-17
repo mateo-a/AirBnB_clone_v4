@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const amenityId = {};
   $('input[type=checkbox]').change(function () {
-    const checked = $(this).is(':checked');
+    var checked = $(this).is(':checked');
     if (checked) {
       amenityId[$(this).attr('data-id')] = $(this).attr('data-name');
     } else {
@@ -13,4 +13,16 @@ document.addEventListener('DOMContentLoaded', function () {
       $('div.amenities h4').html('&nbsp');
     }
   });
+});
+
+$.ajax({
+	url: 'http://0.0.0.0:5001/api/v1/status/',
+	type: 'GET',
+	dataType: 'JSON',
+	success: function(response){
+	$( "#api_status" ).addClass( "available" );
+	},
+	error: function(){
+	$( "#api_status" ).removeClass( "available" );
+	}
 });
