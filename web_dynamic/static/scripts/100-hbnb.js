@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const amenityId = {};
-  $('input[type=checkbox]').change(function () {
+  $('.amenities input[type=checkbox]').change(function () {
     const checked = $(this).is(':checked');
     if (checked) {
       amenityId[$(this).attr('data-id')] = $(this).attr('data-name');
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   $('button').click(function () {
     $.ajax({
-      url: 'http://localhost:5001/api/v1/places_search/',
+      url: 'http://0.0.0.0:5001/api/v1/places_search/',
       type: 'POST',
       dataType: 'JSON',
       contentType: 'application/json',
@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       delete stateId[$(this).attr('data-id')];
     }
-    if (Object.keys(stateId).length > 0 && Object.keys(cityId).length > 0) {
-      $('.locations h4').text(Object.value(stateId).concat(Object.value(cityId)).join(', '));
+    if (Object.keys(stateId).length > 0) {
+      $('.locations h4').text(Object.values(stateId).concat(Object.values(cityId)).join(', '));
     } else {
       $('.locations h4').html('&nbsp;');
     }
@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       delete cityId[$(this).attr('data-id')];
     }
-    if (Object.keys(stateId).length > 0 && Object.keys(cityId).length > 0) {
-      $('.locations h4').text(Object.value(cityId).concat(Object.value(stateId)).join(', '));
+    if (Object.keys(cityId).length > 0) {
+      $('.locations h4').text(Object.values(cityId).concat(Object.values(stateId)).join(', '));
     } else {
       $('.locations h4').html('&nbsp;');
     }
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 $.ajax({
-  url: 'http://localhost:5001/api/v1/status/',
+  url: 'http://0.0.0.0:5001/api/v1/status/',
   type: 'GET',
   dataType: 'JSON',
   success: function (response) {
@@ -75,7 +75,7 @@ $.ajax({
 });
 
 $.ajax({
-  url: 'http://localhost:5001/api/v1/places_search/',
+  url: 'http://0.0.0.0:5001/api/v1/places_search/',
   type: 'POST',
   dataType: 'JSON',
   contentType: 'application/json',

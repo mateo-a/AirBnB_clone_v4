@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (Object.keys(amenityId).length > 0) {
       $('div.amenities h4').text(Object.values(amenityId).join(', '));
     } else {
-      $('div.amenities h4').html('&nbsp');
+      $('div.amenities h4').html('&nbsp;');
     }
   });
 });
